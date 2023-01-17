@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriaDTO implements Serializable {
-    private static final long serialVersionUID = 1l;
+    private static final long serialVersionUID = 1L;
 
     private Long id;
 
     private String name;
 
-    private List<Produto> produtos = new ArrayList<>();
+    private List<ProdutoDTO> produtos = new ArrayList<>();
     public CategoriaDTO(Long id, String name) {
         this.id = id;
         this.name = name;
@@ -27,7 +27,7 @@ public class CategoriaDTO implements Serializable {
     }
     public CategoriaDTO(Categoria categoria, List<Produto> produto){
         this(categoria);
-        produto.forEach(p -> this.produtos.add(ProdutoDTO(p)));
+        produto.forEach(p -> this.produtos.add(new ProdutoDTO(p)));
     }
     public Long getId() {
         return id;

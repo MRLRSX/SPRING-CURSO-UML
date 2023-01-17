@@ -11,11 +11,11 @@ public class ProdutoDTO implements Serializable {
     private static final long serialVersionUID = 1l;
 
     private Long id;
-    private String nome:
+    private String nome;
 
     private Double preco;
 
-    private List<CategoriaDTO> categorias = new ArrayList<>();/
+    private List<CategoriaDTO> categorias = new ArrayList<>();
 
     public ProdutoDTO() {}
 
@@ -31,7 +31,7 @@ public class ProdutoDTO implements Serializable {
     }
 
     public ProdutoDTO(Produto produto, List<Categoria> categoria){
-        categoria.forEach(c-> this.categorias.add(new CategoriaDTO(C)));
+        categoria.forEach(c-> this.categorias.add(new CategoriaDTO(c)));
     }
 
     public Long getId() {
