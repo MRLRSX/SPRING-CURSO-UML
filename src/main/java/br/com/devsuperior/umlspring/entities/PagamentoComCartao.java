@@ -1,5 +1,6 @@
 package br.com.devsuperior.umlspring.entities;
 
+import br.com.devsuperior.umlspring.entities.enums.EstadoPagamento;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -10,7 +11,7 @@ public class PagamentoComCartao extends Pagamento {
     private Integer numeroDeParcelas;
 
     public PagamentoComCartao(){}
-    public PagamentoComCartao(Integer id, Integer estado, Pedido pedido, Integer numeroDeParcelas) {
+    public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroDeParcelas) {
         super(id, estado, pedido);
         this.numeroDeParcelas = numeroDeParcelas;
     }
