@@ -1,0 +1,1 @@
+insert into tb_categoria(name)value('informatica');
