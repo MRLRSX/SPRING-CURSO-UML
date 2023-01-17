@@ -1,5 +1,6 @@
 package br.com.devsuperior.umlspring.entities;
 
+import br.com.devsuperior.umlspring.entities.enums.EstadoPagamento;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -18,9 +19,9 @@ public  abstract class Pagamento implements Serializable {
     private Pedido pedido;
 
     public Pagamento(){}
-    public Pagamento(Integer id, Integer estado, Pedido pedido) {
+    public Pagamento(Integer id, EstadoPagamento estadoPagamento, Pedido pedido) {
         this.id = id;
-        this.estado = estado;
+        this.estado = estadoPagamento.getCod();
         this.pedido = pedido;
     }
 
@@ -32,12 +33,12 @@ public  abstract class Pagamento implements Serializable {
         this.id = id;
     }
 
-    public Integer getEstado() {
-        return estado;
+    public EstadoPagamento getEstado() {
+        return EstadoPagamento.toEnum(estado);
     }
 
-    public void setEstado(Integer estado) {
-        this.estado = estado;
+    public void setEstado(EstadoPagamento estado) {
+        this.estado = estado.getCod();
     }
 
     public Pedido getPedido() {
