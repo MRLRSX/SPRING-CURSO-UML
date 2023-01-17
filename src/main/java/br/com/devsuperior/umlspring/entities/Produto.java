@@ -3,9 +3,8 @@ package br.com.devsuperior.umlspring.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="tb_produto")
@@ -18,6 +17,10 @@ public class Produto implements Serializable {
     private String nome;
 
     private Double preco;
+
+    @OneToMany(mappedBy = "id.produto")
+    private Set<ItemPedido> itemPedido = new HashSet<>();
+
 
     @ManyToMany
     @JoinTable(name = "tb_produto_categoria",
@@ -32,7 +35,9 @@ public class Produto implements Serializable {
         this.nome = nome;
         this.preco = preco;
     }
-
+    public List<Pedido> getPedidos(){
+        return itemPedido.stream().map(x -> x.getPedido()).collect(Collectors.toList());
+    }
     public Long getId() {
         return id;
     }
@@ -59,6 +64,10 @@ public class Produto implements Serializable {
 
     public List<Categoria> getCategorias() {
         return categorias;
+    }
+
+    public Set<ItemPedido> getItemPedido() {
+        return itemPedido;
     }
 
     @Override
